@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { motionConfig } from "../motionConfig";
 import confetti from "canvas-confetti";
 
 const Surprise = () => {
@@ -13,9 +14,7 @@ const Surprise = () => {
 
         {/* Title */}
         <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          {...motionConfig.fadeUp}
           className="heading-font text-4xl md:text-6xl mb-6"
         >
           A Special Surprise 🎁
@@ -75,7 +74,7 @@ const Surprise = () => {
               <motion.div
                 initial={{ y: 50 }}
                 animate={{ y: 0 }}
-                className="bg-white/10 backdrop-blur-xl border border-white/20 p-10 rounded-2xl max-w-lg text-center text-white"
+                className="card max-w-lg text-center text-white"
               >
 
                 <h3 className="text-3xl font-bold mb-4">

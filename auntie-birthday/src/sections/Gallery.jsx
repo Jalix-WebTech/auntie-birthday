@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { motionConfig } from "../motionConfig";
 import img1 from "../assets/hero-bg.jpg";
 import img2 from "../assets/hero-bg.jpg";
 import img3 from "../assets/hero-bg.jpg";
@@ -24,9 +25,7 @@ const Gallery = () => {
 
       {/* Title */}
       <motion.h2
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        {...motionConfig.fadeUp}
         className="heading-font text-4xl md:text-6xl text-center mb-12"
       >
         Beautiful Memories
@@ -42,7 +41,7 @@ const Gallery = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ delay: i * 0.2 }}
             whileHover={{ scale: 1.05 }}
-            className="relative group rounded-2xl overflow-hidden shadow-2xl"
+            className="card relative group overflow-hidden shadow-2xl"
           >
 
             {/* Image */}

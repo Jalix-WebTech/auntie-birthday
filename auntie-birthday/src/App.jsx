@@ -1,22 +1,30 @@
-import { useState, useEffect } from "react";
+import { lazy, Suspense, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Loader from "./components/Loader";
 import Navbar from "./components/Navbar";
 import Hero from "./sections/Hero";
-import Gallery from "./sections/Gallery";
-import Surprise from "./sections/Surprise";
+const Gallery = lazy(() => import("./sections/Gallery"));
+const Surprise = lazy(() => import("./sections/Surprise"));
 import PageTransition from "./components/PageTransition";
-import CinematicIntro from "./components/CinematicIntro";
+import LaunchIntro from "./components/LaunchIntro";
+
+const motionConfig = {
+  fadeUp: {
+    initial: { opacity: 0, y: 40 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.3 },
+    transition: { duration: 0.8 },
+  },
+};
+
+const Section = ({ children }) => (
+  <div className="max-w-6xl mx-auto px-6 py-24">{children}</div>
+);
 
 const RevealSection = ({ children }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 60 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.3 }}
-    transition={{ duration: 0.8 }}
-  >
-    {children}
-  </motion.div>
+  <Section>
+    <motion.div {...motionConfig.fadeUp}>{children}</motion.div>
+  </Section>
 );
 
 function App() {
@@ -57,22 +65,30 @@ function App() {
       {loading && <Loader />}
 
       {!loading && !introDone && (
-        <CinematicIntro onFinish={() => setIntroDone(true)} />
+        <LaunchIntro onDone={() => setIntroDone(true)} />
       )}
 
       {!loading && introDone && (
         <PageTransition>
           <Navbar />
-          {showHero && <Hero />}
+          {showHero && (
+            <Section>
+              <Hero />
+            </Section>
+          )}
           {showGallery && (
-            <RevealSection>
-              <Gallery />
-            </RevealSection>
+            <Suspense fallback={<div className="py-20 text-white text-center">Loading memories...</div>}>
+              <RevealSection>
+                <Gallery />
+              </RevealSection>
+            </Suspense>
           )}
           {showSurprise && (
-            <RevealSection>
-              <Surprise />
-            </RevealSection>
+            <Suspense fallback={<div className="py-20 text-white text-center">Loading surprise...</div>}>
+              <RevealSection>
+                <Surprise />
+              </RevealSection>
+            </Suspense>
           )}
         </PageTransition>
       )}

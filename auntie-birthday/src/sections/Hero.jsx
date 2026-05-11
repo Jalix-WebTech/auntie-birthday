@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useMemo, useState, useRef, useEffect } from "react";
+import { motionConfig } from "../motionConfig";
 import confetti from "canvas-confetti";
 import heroBg from "../assets/hero-bg.jpg";
 
@@ -69,13 +70,13 @@ const Hero = () => {
     }
   };
 
-  const share = () => {
+  const shareExperience = () => {
     const url = window.location.href;
-    const text =
-      "🎬 I just experienced something incredible — open this surprise birthday experience ❤️";
+    const message =
+      "🎉 I just experienced something beautiful — you should see this";
 
     window.open(
-      `https://wa.me/?text=${encodeURIComponent(text + " " + url)}`,
+      `https://wa.me/?text=${encodeURIComponent(message + " " + url)}`,
       "_blank"
     );
   };
@@ -141,9 +142,7 @@ const Hero = () => {
 
       {/* MAIN CONTENT */}
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2 }}
+        {...motionConfig.fadeUp}
         className="relative z-20 text-center max-w-4xl px-6 animate-fadeIn"
         style={{
           filter: soundEnabled ? "brightness(1.2) contrast(1.1)" : "none",
@@ -178,13 +177,13 @@ const Hero = () => {
                 .getElementById("surprise")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            className="px-6 py-3 bg-pink-500 hover:bg-pink-400 rounded-full transition text-white"
+            className="btn-primary"
           >
             Open Experience
           </button>
 
           <button
-            onClick={share}
+            onClick={shareExperience}
             className="glass px-6 py-3 text-white hover:scale-105 transition"
           >
             Share Experience 📱

@@ -1,6 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
+:root {
+  --bg: #020617;
+  --card: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.1);
+  --text: #ffffff;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -16,6 +23,26 @@ body {
 
 .heading-font {
   font-family: 'Playfair Display', serif;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  backdrop-filter: blur(18px);
+  padding: 24px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ec4899, #f97316);
+  padding: 12px 24px;
+  border-radius: 999px;
+  color: white;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
 }
 
 .glass {
