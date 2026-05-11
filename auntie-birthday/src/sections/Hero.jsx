@@ -17,6 +17,7 @@ const Hero = () => {
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [showPrompt, setShowPrompt] = useState(false);
   const [cinematic, setCinematic] = useState(false);
+  const [showUnlock, setShowUnlock] = useState(false);
 
   // Show sound prompt after load and reveal cinematic content later
   useEffect(() => {
@@ -26,11 +27,16 @@ const Hero = () => {
 
     const t2 = setTimeout(() => {
       setCinematic(true);
-    }, 3000);
+    }, 2500);
+
+    const t3 = setTimeout(() => {
+      setShowUnlock(true);
+    }, 6000);
 
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
+      clearTimeout(t3);
     };
   }, []);
 
@@ -63,17 +69,34 @@ const Hero = () => {
     }
   };
 
+  const share = () => {
+    const url = window.location.href;
+    const text =
+      "🎬 I just experienced something incredible — open this surprise birthday experience ❤️";
+
+    window.open(
+      `https://wa.me/?text=${encodeURIComponent(text + " " + url)}`,
+      "_blank"
+    );
+  };
+
   return (
     <section
       id="hero"
-      className="relative min-h-screen overflow-hidden flex items-center justify-center cinematic-enter"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black cinematic-enter"
     >
+      <div className="absolute inset-0 bg-gradient-radial from-pink-500/10 via-black to-black" />
+      <div className="absolute inset-0 bg-black/60" />
       {/* BACKGROUND IMAGE */}
       <img
         src={heroBg}
         alt="Background"
         className="absolute inset-0 w-full h-full object-cover z-0"
       />
+
+      {/* BLUR DEPTH LAYERS */}
+      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black" />
 
       {/* CINEMATIC DARK OVERLAY */}
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
@@ -88,6 +111,19 @@ const Hero = () => {
       <div className="absolute inset-0 z-10 flex items-center justify-center">
         <div className="w-[600px] h-[600px] bg-pink-500/20 blur-[120px] rounded-full" />
       </div>
+
+      {/* FLOATING AMBIENT MOTION */}
+      <motion.div
+        animate={{ y: [0, -30, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-10 left-10 w-60 h-60 bg-pink-500/10 blur-3xl rounded-full"
+      />
+
+      <motion.div
+        animate={{ y: [0, 40, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-10 right-10 w-72 h-72 bg-yellow-400/10 blur-3xl rounded-full"
+      />
 
       {/* PARTICLES */}
       <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none">
@@ -119,12 +155,14 @@ const Hero = () => {
         </p>
 
         {/* Title */}
-        <h1 className="heading-font text-5xl md:text-8xl font-bold leading-tight text-white drop-shadow-2xl">
-          Happy Birthday <br />
-          <span className="text-pink-400 drop-shadow-[0_0_25px_rgba(236,72,153,0.6)]">
-            Auntie ❤️
-          </span>
-        </h1>
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="heading-font text-5xl md:text-8xl text-white text-center"
+        >
+          A Birthday Experience
+        </motion.h1>
 
         {/* Description */}
         <p className="max-w-2xl mx-auto mt-8 text-slate-200 text-base md:text-2xl leading-relaxed">
@@ -140,22 +178,31 @@ const Hero = () => {
                 .getElementById("surprise")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            className="px-8 py-4 rounded-full bg-pink-500 hover:bg-pink-400 transition text-white text-lg shadow-xl"
+            className="px-6 py-3 bg-pink-500 hover:bg-pink-400 rounded-full transition text-white"
           >
-            Open Surprise
+            Open Experience
           </button>
 
           <button
-            onClick={() =>
-              document
-                .getElementById("memories")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="px-8 py-4 rounded-full border border-white/30 hover:bg-white/10 transition text-lg"
+            onClick={share}
+            className="glass px-6 py-3 text-white hover:scale-105 transition"
           >
-            View Memories
+            Share Experience 📱
           </button>
         </div>
+
+        {showUnlock && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="glass mt-8 mx-auto max-w-2xl px-6 py-5 text-white"
+          >
+            <p className="text-lg md:text-xl">
+              This moment is crafted to feel like a keynote reveal — soft, emotional, and unforgettable.
+            </p>
+          </motion.div>
+        )}
 
         {/* VOICE MESSAGE */}
         {cinematic && (
@@ -164,7 +211,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             className="mt-8 max-w-2xl mx-auto"
           >
-            <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20">
+            <div className="glass p-6 rounded-xl border border-white/20">
               <p className="text-lg italic text-white">
                 🎤 "Happy Birthday Auntie ❤️... you are deeply loved..."
               </p>
