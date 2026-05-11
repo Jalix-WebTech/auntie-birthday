@@ -8,7 +8,7 @@ const LaunchIntro = ({ onDone }) => {
     const t = setTimeout(() => {
       setVisible(false);
       onDone?.();
-    }, 2200);
+    }, 5000);
 
     return () => clearTimeout(t);
   }, [onDone]);
@@ -26,29 +26,55 @@ const LaunchIntro = ({ onDone }) => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 1.1 }}
             transition={{ duration: 1 }}
-            className="text-center"
+            className="text-center max-w-2xl mx-auto"
           >
-            <motion.h1
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2 }}
-              className="text-white text-4xl md:text-6xl heading-font"
-            >
-              Introducing...
-            </motion.h1>
-
+            {/* Line 1 */}
             <motion.h2
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2 }}
-              className="text-white text-3xl md:text-5xl heading-font mt-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 0.3 }}
+              className="text-3xl md:text-4xl text-white font-semibold"
             >
-              A Birthday Experience
+              A Celebration of You ❤️
             </motion.h2>
 
-            <p className="text-white/50 mt-4 tracking-wide">
-              Crafted with love & attention to detail
-            </p>
+            {/* Line 2 */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 1.2 }}
+              className="mt-6 text-white/70 text-lg leading-relaxed"
+            >
+              A heartfelt cinematic moment created to honor your life, your kindness,
+              and the love you bring to everyone around you.
+            </motion.p>
+
+            {/* Line 3 */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 2.2 }}
+              className="mt-6 text-white/60 text-base"
+            >
+              Every detail here is made to feel like a memory unfolding — soft, warm,
+              and deeply personal.
+            </motion.p>
+
+            {/* Button Reveal */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 3 }}
+              className="mt-10 flex gap-4 justify-center"
+            >
+              <button className="px-6 py-3 rounded-full bg-pink-500 text-white hover:bg-pink-400 transition">
+                Open Your Surprise 🎁
+              </button>
+
+              <button className="px-6 py-3 rounded-full border border-white/30 text-white hover:bg-white/10 transition">
+                Share the Love 📱
+              </button>
+            </motion.div>
           </motion.div>
         </motion.div>
       )}
