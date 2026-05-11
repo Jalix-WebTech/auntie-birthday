@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useMemo, useState, useRef, useEffect } from "react";
-import { motionSystem } from "../motionConfig";
+import { motionPreset } from "../motionConfig";
 import confetti from "canvas-confetti";
 import heroBg from "../assets/hero-bg.jpg";
 
@@ -70,11 +70,11 @@ const Hero = () => {
     }
   };
 
-  const shareProduct = () => {
+  const shareGlobal = () => {
     const url = window.location.href;
 
     const message =
-      "🎬 I just experienced something incredible — this feels like a real product launch experience";
+      "🎬 You need to see this — it's a cinematic digital experience built like a real product launch.";
 
     window.open(
       `https://wa.me/?text=${encodeURIComponent(message + " " + url)}`,
@@ -143,7 +143,7 @@ const Hero = () => {
 
       {/* MAIN CONTENT */}
       <motion.div
-        {...motionSystem.fadeUp}
+        {...motionPreset.fadeUp}
         className="relative z-20 text-center max-w-4xl px-6 animate-fadeIn"
         style={{
           filter: soundEnabled ? "brightness(1.2) contrast(1.1)" : "none",
@@ -161,12 +161,12 @@ const Hero = () => {
           transition={{ duration: 1 }}
           className="heading-font text-5xl md:text-7xl text-white text-center"
         >
-          A Cinematic Memory Experience
+          A Global-Grade Memory Experience
         </motion.h1>
 
         {/* Description */}
-        <p className="text-white/60 mt-6 text-center max-w-xl mx-auto">
-          A beautifully crafted digital experience designed to celebrate someone truly special.
+        <p className="text-white/60 mt-6 text-center max-w-2xl mx-auto">
+          A beautifully engineered cinematic experience designed to turn memories into interactive moments.
         </p>
 
         {/* BUTTONS */}
@@ -183,7 +183,7 @@ const Hero = () => {
           </button>
 
           <button
-            onClick={shareProduct}
+            onClick={shareGlobal}
             className="glass px-6 py-3 text-white hover:scale-105 transition"
           >
             Share Experience 📱

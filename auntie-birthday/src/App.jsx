@@ -7,12 +7,19 @@ const Gallery = lazy(() => import("./sections/Gallery"));
 const Surprise = lazy(() => import("./sections/Surprise"));
 import PageTransition from "./components/PageTransition";
 import LaunchIntro from "./components/LaunchIntro";
-import { motionSystem } from "./motionConfig";
+import { motionPreset } from "./motionConfig";
 
 const sections = [
   { id: "hero", title: "Introduction" },
   { id: "gallery", title: "Memories" },
   { id: "surprise", title: "Surprise" }
+];
+
+const productFlow = [
+  { id: "hero", label: "Experience" },
+  { id: "gallery", label: "Moments" },
+  { id: "surprise", label: "Reveal" },
+  { id: "share", label: "Share" }
 ];
 
 const Section = ({ children }) => (
@@ -21,7 +28,7 @@ const Section = ({ children }) => (
 
 const RevealSection = ({ children }) => (
   <Section>
-    <motion.div {...motionSystem.fadeUp}>{children}</motion.div>
+    <motion.div {...motionPreset.fadeUp}>{children}</motion.div>
   </Section>
 );
 
@@ -32,11 +39,11 @@ function App() {
   const [showGallery, setShowGallery] = useState(false);
   const [showSurprise, setShowSurprise] = useState(false);
 
-  const shareProduct = () => {
+  const shareGlobal = () => {
     const url = window.location.href;
 
     const message =
-      "🎬 I just experienced something incredible — this feels like a real product launch experience";
+      "🎬 You need to see this — it's a cinematic digital experience built like a real product launch.";
 
     window.open(
       `https://wa.me/?text=${encodeURIComponent(message + " " + url)}`,
@@ -104,17 +111,17 @@ function App() {
           {/* Stage 4 — Sharing loop Viral CTA */}
           {showSurprise && (
             <Section>
-              <motion.div {...motionSystem.fadeUp} className="text-center py-24">
-                <h2 className="text-3xl text-white mb-4">
-                  Share this experience
+              <motion.div {...motionPreset.fadeUp} className="text-center py-24">
+                <h2 className="text-3xl text-white mb-3">
+                  Share globally 🌍
                 </h2>
 
                 <p className="text-white/50 mb-6">
-                  Let others feel it too.
+                  Let others experience it anywhere in the world.
                 </p>
 
-                <button onClick={shareProduct} className="btn">
-                  Share via WhatsApp 📱
+                <button onClick={shareGlobal} className="btn">
+                  Share Experience 📱
                 </button>
               </motion.div>
             </Section>

@@ -3,10 +3,11 @@
 
 :root {
   --bg: #020617;
-  --surface: rgba(255,255,255,0.06);
-  --stroke: rgba(255,255,255,0.12);
+  --surface: rgba(255,255,255,0.05);
+  --border: rgba(255,255,255,0.12);
   --primary: #ec4899;
-  --secondary: #f97316;
+  --accent: #f97316;
+  --text: #ffffff;
 }
 
 html {
@@ -28,16 +29,26 @@ body {
 
 .card {
   background: var(--surface);
-  border: 1px solid var(--stroke);
+  border: 1px solid var(--border);
   border-radius: 24px;
   backdrop-filter: blur(20px);
+  padding: 24px;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .btn {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: linear-gradient(135deg, var(--primary), var(--accent));
   padding: 12px 26px;
   border-radius: 999px;
-  transition: 0.3s;
+  color: white;
+  transition: 0.25s ease;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
 }
 
 .glass {
