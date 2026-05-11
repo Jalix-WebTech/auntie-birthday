@@ -27,6 +27,15 @@ const Hero = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Confetti on first visit
+  useEffect(() => {
+    confetti({
+      particleCount: 120,
+      spread: 90,
+      origin: { y: 0.6 },
+    });
+  }, []);
+
   // Enable sound + cinematic experience
   const enableSound = async () => {
     try {
@@ -62,6 +71,9 @@ const Hero = () => {
       {/* CINEMATIC DARK OVERLAY */}
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
 
+      {/* BACKGROUND DEPTH OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/90" />
+
       {/* VIGNETTE (focus center) */}
       <div className="absolute inset-0 z-10 pointer-events-none shadow-[inset_0_0_180px_rgba(0,0,0,0.9)]" />
 
@@ -89,7 +101,7 @@ const Hero = () => {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2 }}
-        className="relative z-20 text-center max-w-4xl px-6"
+        className="relative z-20 text-center max-w-4xl px-6 animate-fadeIn"
       >
         {/* Subtitle */}
         <p className="uppercase tracking-[6px] text-pink-300 mb-5 text-sm md:text-base">
@@ -140,11 +152,13 @@ const Hero = () => {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mt-8 text-white max-w-2xl mx-auto"
+            className="mt-8 max-w-2xl mx-auto"
           >
-            🎤 "Happy Birthday Auntie ❤️  
-            Your love is the light that holds this family together.  
-            This moment is for you — with all our love."
+            <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20">
+              <p className="text-lg italic text-white">
+                🎤 "Happy Birthday Auntie ❤️... you are deeply loved..."
+              </p>
+            </div>
           </motion.div>
         )}
       </motion.div>
