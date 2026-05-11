@@ -28,9 +28,24 @@ const LaunchIntro = ({ onDone }) => {
             transition={{ duration: 1 }}
             className="text-center"
           >
-            <h1 className="text-white text-4xl md:text-6xl heading-font">
-              A Special Experience
-            </h1>
+            <motion.h1
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2 }}
+              className="text-white text-4xl md:text-6xl heading-font"
+            >
+              Introducing...
+            </motion.h1>
+
+            <motion.h2
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2 }}
+              className="text-white text-3xl md:text-5xl heading-font mt-4"
+            >
+              A Birthday Experience
+            </motion.h2>
+
             <p className="text-white/50 mt-4 tracking-wide">
               Crafted with love & attention to detail
             </p>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { motionConfig } from "../motionConfig";
+import { motionSystem } from "../motionConfig";
 import confetti from "canvas-confetti";
 
 const Surprise = () => {
@@ -14,7 +14,7 @@ const Surprise = () => {
 
         {/* Title */}
         <motion.h2
-          {...motionConfig.fadeUp}
+          {...motionSystem.fadeUp}
           className="heading-font text-4xl md:text-6xl mb-6"
         >
           A Special Surprise 🎁

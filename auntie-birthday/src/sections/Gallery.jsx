@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { motionConfig } from "../motionConfig";
+import { motionSystem } from "../motionConfig";
 import img1 from "../assets/hero-bg.jpg";
 import img2 from "../assets/hero-bg.jpg";
 import img3 from "../assets/hero-bg.jpg";
@@ -25,7 +25,7 @@ const Gallery = () => {
 
       {/* Title */}
       <motion.h2
-        {...motionConfig.fadeUp}
+        {...motionSystem.fadeUp}
         className="heading-font text-4xl md:text-6xl text-center mb-12"
       >
         Beautiful Memories

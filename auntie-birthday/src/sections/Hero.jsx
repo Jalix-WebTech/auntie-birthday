@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { useMemo, useState, useRef, useEffect } from "react";
-import { motionConfig } from "../motionConfig";
+import { motionSystem } from "../motionConfig";
 import confetti from "canvas-confetti";
 import heroBg from "../assets/hero-bg.jpg";
 
 const generateParticles = () =>
-  Array.from({ length: 20 }).map(() => ({
+  Array.from({ length: 10 }).map(() => ({
     top: Math.random() * 100,
     left: Math.random() * 100,
   }));
@@ -70,10 +70,11 @@ const Hero = () => {
     }
   };
 
-  const shareExperience = () => {
+  const shareProduct = () => {
     const url = window.location.href;
+
     const message =
-      "🎉 I just experienced something beautiful — you should see this";
+      "🎬 I just experienced something incredible — this feels like a real product launch experience";
 
     window.open(
       `https://wa.me/?text=${encodeURIComponent(message + " " + url)}`,
@@ -142,7 +143,7 @@ const Hero = () => {
 
       {/* MAIN CONTENT */}
       <motion.div
-        {...motionConfig.fadeUp}
+        {...motionSystem.fadeUp}
         className="relative z-20 text-center max-w-4xl px-6 animate-fadeIn"
         style={{
           filter: soundEnabled ? "brightness(1.2) contrast(1.1)" : "none",
@@ -158,15 +159,14 @@ const Hero = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="heading-font text-5xl md:text-8xl text-white text-center"
+          className="heading-font text-5xl md:text-7xl text-white text-center"
         >
-          A Birthday Experience
+          A Cinematic Memory Experience
         </motion.h1>
 
         {/* Description */}
-        <p className="max-w-2xl mx-auto mt-8 text-slate-200 text-base md:text-2xl leading-relaxed">
-          Today we celebrate the incredible woman whose kindness, wisdom, and love
-          brighten every life around her.
+        <p className="text-white/60 mt-6 text-center max-w-xl mx-auto">
+          A beautifully crafted digital experience designed to celebrate someone truly special.
         </p>
 
         {/* BUTTONS */}
@@ -177,13 +177,13 @@ const Hero = () => {
                 .getElementById("surprise")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
-            className="btn-primary"
+            className="btn"
           >
             Open Experience
           </button>
 
           <button
-            onClick={shareExperience}
+            onClick={shareProduct}
             className="glass px-6 py-3 text-white hover:scale-105 transition"
           >
             Share Experience 📱

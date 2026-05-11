@@ -3,9 +3,10 @@
 
 :root {
   --bg: #020617;
-  --card: rgba(255, 255, 255, 0.06);
-  --border: rgba(255, 255, 255, 0.1);
-  --text: #ffffff;
+  --surface: rgba(255,255,255,0.06);
+  --stroke: rgba(255,255,255,0.12);
+  --primary: #ec4899;
+  --secondary: #f97316;
 }
 
 html {
@@ -26,23 +27,17 @@ body {
 }
 
 .card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  backdrop-filter: blur(18px);
-  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--stroke);
+  border-radius: 24px;
+  backdrop-filter: blur(20px);
 }
 
-.btn-primary {
-  background: linear-gradient(135deg, #ec4899, #f97316);
-  padding: 12px 24px;
+.btn {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  padding: 12px 26px;
   border-radius: 999px;
-  color: white;
   transition: 0.3s;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
 }
 
 .glass {

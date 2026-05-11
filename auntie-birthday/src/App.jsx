@@ -7,15 +7,13 @@ const Gallery = lazy(() => import("./sections/Gallery"));
 const Surprise = lazy(() => import("./sections/Surprise"));
 import PageTransition from "./components/PageTransition";
 import LaunchIntro from "./components/LaunchIntro";
+import { motionSystem } from "./motionConfig";
 
-const motionConfig = {
-  fadeUp: {
-    initial: { opacity: 0, y: 40 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.3 },
-    transition: { duration: 0.8 },
-  },
-};
+const sections = [
+  { id: "hero", title: "Introduction" },
+  { id: "gallery", title: "Memories" },
+  { id: "surprise", title: "Surprise" }
+];
 
 const Section = ({ children }) => (
   <div className="max-w-6xl mx-auto px-6 py-24">{children}</div>
@@ -23,7 +21,7 @@ const Section = ({ children }) => (
 
 const RevealSection = ({ children }) => (
   <Section>
-    <motion.div {...motionConfig.fadeUp}>{children}</motion.div>
+    <motion.div {...motionSystem.fadeUp}>{children}</motion.div>
   </Section>
 );
 
@@ -33,6 +31,18 @@ function App() {
   const [showHero, setShowHero] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
   const [showSurprise, setShowSurprise] = useState(false);
+
+  const shareProduct = () => {
+    const url = window.location.href;
+
+    const message =
+      "🎬 I just experienced something incredible — this feels like a real product launch experience";
+
+    window.open(
+      `https://wa.me/?text=${encodeURIComponent(message + " " + url)}`,
+      "_blank"
+    );
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -89,6 +99,25 @@ function App() {
                 <Surprise />
               </RevealSection>
             </Suspense>
+          )}
+
+          {/* Stage 4 — Sharing loop Viral CTA */}
+          {showSurprise && (
+            <Section>
+              <motion.div {...motionSystem.fadeUp} className="text-center py-24">
+                <h2 className="text-3xl text-white mb-4">
+                  Share this experience
+                </h2>
+
+                <p className="text-white/50 mb-6">
+                  Let others feel it too.
+                </p>
+
+                <button onClick={shareProduct} className="btn">
+                  Share via WhatsApp 📱
+                </button>
+              </motion.div>
+            </Section>
           )}
         </PageTransition>
       )}
