@@ -4,6 +4,7 @@ import confetti from "canvas-confetti";
 
 const Surprise = () => {
   const [opened, setOpened] = useState(false);
+  const [unlocked, setUnlocked] = useState(false);
 
   return (
    <section id="surprise" className="py-24 px-6 bg-slate-950 flex items-center justify-center">
@@ -37,6 +38,28 @@ const Surprise = () => {
         >
           Open Your Surprise
         </motion.button>
+
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setUnlocked(true)}
+          className="mt-6 px-6 py-3 bg-pink-500 rounded-full text-white hover:bg-pink-400 transition"
+        >
+          Unlock Secret Message 💌
+        </motion.button>
+
+        {unlocked && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-6 bg-white/10 p-6 rounded-xl backdrop-blur-md border border-white/20"
+          >
+            <p className="text-lg text-white leading-relaxed">
+              💖 "Auntie, this project was built with love, gratitude, and every
+              memory we cherish with you. You are truly special to all of us."
+            </p>
+          </motion.div>
+        )}
 
         {/* Surprise Modal */}
         <AnimatePresence>
