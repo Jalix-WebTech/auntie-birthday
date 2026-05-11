@@ -18,13 +18,20 @@ const Hero = () => {
   const [showPrompt, setShowPrompt] = useState(false);
   const [cinematic, setCinematic] = useState(false);
 
-  // Show sound prompt after load
+  // Show sound prompt after load and reveal cinematic content later
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const t1 = setTimeout(() => {
       setShowPrompt(true);
     }, 1200);
 
-    return () => clearTimeout(timer);
+    const t2 = setTimeout(() => {
+      setCinematic(true);
+    }, 3000);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
   }, []);
 
   // Confetti on first visit
@@ -59,7 +66,7 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen overflow-hidden flex items-center justify-center"
+      className="relative min-h-screen overflow-hidden flex items-center justify-center cinematic-enter"
     >
       {/* BACKGROUND IMAGE */}
       <img
@@ -102,6 +109,9 @@ const Hero = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2 }}
         className="relative z-20 text-center max-w-4xl px-6 animate-fadeIn"
+        style={{
+          filter: soundEnabled ? "brightness(1.2) contrast(1.1)" : "none",
+        }}
       >
         {/* Subtitle */}
         <p className="uppercase tracking-[6px] text-pink-300 mb-5 text-sm md:text-base">
