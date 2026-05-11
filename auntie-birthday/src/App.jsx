@@ -128,6 +128,10 @@ function App() {
           )}
         </PageTransition>
       )}
+
+      <footer className="text-center py-10 text-white/50 text-sm tracking-wide">
+        Built with ❤️ by James Felix on behalf of your cousins
+      </footer>
     </main>
   );
 }
