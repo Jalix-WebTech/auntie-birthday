@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { motionPreset } from "../motionConfig";
 import img1 from "../assets/SR_1.jpg";
-import img2 from "../assets/Sr_2.jpg";
-import img3 from "../assets/Sr_3.jpg";
+import img2 from "../assets/SR_2.jpg";
+import img3 from "../assets/SR-3.jpg";
+import img4 from "../assets/SR-4.jpg";
+import img5 from "../assets/Sr-5.jpg";
+import img6 from "../assets/Sr_6.jpg";
 
 const Gallery = () => {
   const memories = [
@@ -12,11 +15,23 @@ const Gallery = () => {
     },
     {
       img: img2,
-      text: "The heart of our family 🌸",
+      text: "A heart full of love, a smile full of light 🌸",
     },
     {
       img: img3,
-      text: "Moments we’ll never forget 💕",
+      text: "Her smile heals, her heart loves 💐",
+    },
+    {
+      img: img4,
+      text: "Constantly caring, endlessly smiling 😊",
+    },
+    {
+      img: img5,
+      text: "Smiling through life, loving through all 🌼",
+    },
+    {
+      img: img6,
+      text: "Pure heart, beautiful smile 🌹",
     },
   ];
 
