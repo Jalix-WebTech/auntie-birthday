@@ -9,19 +9,6 @@ import PageTransition from "./components/PageTransition";
 import LaunchIntro from "./components/LaunchIntro";
 import { motionPreset } from "./motionConfig";
 
-const sections = [
-  { id: "hero", title: "Introduction" },
-  { id: "gallery", title: "Memories" },
-  { id: "surprise", title: "Surprise" }
-];
-
-const productFlow = [
-  { id: "hero", label: "Experience" },
-  { id: "gallery", label: "Moments" },
-  { id: "surprise", label: "Reveal" },
-  { id: "share", label: "Share" }
-];
-
 const Section = ({ children }) => (
   <div className="max-w-6xl mx-auto px-6 py-24">{children}</div>
 );

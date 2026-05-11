@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { motionPreset } from "../motionConfig";
-import img1 from "../assets/hero-bg.jpg";
-import img2 from "../assets/hero-bg.jpg";
-import img3 from "../assets/hero-bg.jpg";
+import img1 from "../assets/SR_1.jpg";
+import img2 from "../assets/Sr_2.jpg";
+import img3 from "../assets/Sr_3.jpg";
 
 const Gallery = () => {
   const memories = [
