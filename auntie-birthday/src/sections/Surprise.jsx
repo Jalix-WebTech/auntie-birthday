@@ -82,9 +82,19 @@ const Surprise = () => {
                 </h3>
 
                 <p className="text-slate-200 leading-relaxed mb-6">
-                  You are the heart of our family, the source of our strength,
-                  and the reason so many smiles exist today.
-                  We love you deeply and celebrate you always.
+Dear Auntie,
+
+On your special day, I thank God for your life and for the beautiful impact you have on everyone around you.
+
+I pray that God continues to bless you richly with good health, long life, peace of heart, and joy that never runs dry. May every new day bring you strength, favor, and reasons to smile deeply.
+
+You are the heart of our family — the one who loves without limits, gives without asking, and cares in ways that cannot be fully repaid. Your presence is a gift we never take for granted.
+
+I pray that happiness surrounds you always, that you are protected in every step you take, and that your life continues to shine with grace and purpose.
+
+We love you deeply, and today we celebrate not just your birthday, but the blessing that you are to all of us.
+
+Happy Birthday, Auntie ❤️
                 </p>
 
                 <button

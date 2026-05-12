@@ -116,9 +116,15 @@ function App() {
         </PageTransition>
       )}
 
-      <footer className="text-center py-10 text-white/50 text-sm tracking-wide">
-        Built with ❤️ by James Felix on behalf of your cousins
-      </footer>
+<footer className="text-center py-12 px-4 text-white bg-slate-950 border-t border-white/10">
+  <p className="text-xl md:text-2xl font-bold tracking-wide">
+    Built with love by James Felix
+  </p>
+
+  <p className="text-sm md:text-base text-white/60 mt-2">
+    Crafted for your special moment ❤️
+  </p>
+</footer>
     </main>
   );
 }

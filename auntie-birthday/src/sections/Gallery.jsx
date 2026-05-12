@@ -67,7 +67,7 @@ const Gallery = () => {
             />
 
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition" />
+          <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition" />
 
             {/* Text */}
             <div className="absolute bottom-4 left-4 right-4 text-white text-lg font-medium">
