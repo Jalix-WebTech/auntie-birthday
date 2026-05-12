@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { motionPreset } from "../motionConfig";
-import img1 from "../assets/SR_1.jpg";
-import img2 from "../assets/SR_2.jpg";
-import img3 from "../assets/SR-3.jpg";
-import img4 from "../assets/SR-4.jpg";
-import img5 from "../assets/Sr-5.jpg";
-import img6 from "../assets/Sr_6.jpg";
+import img1 from "../assets/sr1.jpg";
+import img2 from "../assets/sr2.jpg";
+import img3 from "../assets/sr3.jpg";
+import img4 from "../assets/sr4.jpg";
+import img5 from "../assets/sr5.jpg";
+import img6 from "../assets/sr6.jpg";
 
 const Gallery = () => {
   const memories = [
